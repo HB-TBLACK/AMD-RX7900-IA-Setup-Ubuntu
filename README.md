@@ -180,6 +180,37 @@ python3 main.py
 
 ComfyUI se iniciará y te proporcionará una URL (generalmente http://127.0.0.1:8188). Pégala en tu navegador web.
 
+## Versiones del sistema y software utilizado
+
+Para asegurar compatibilidad y facilitar la instalación, estas son las versiones específicas usadas y probadas en esta guía:
+
+| Componente           | Versión                     | Comentarios                          |
+|---------------------|-----------------------------|------------------------------------|
+| **Ubuntu**           | 22.04.5 LTS                 | Base estable y con soporte largo   |
+| **Kernel Linux**     | 5.19+                       | Compatible con ROCm y GPU AMD      |
+| **ROCm**             | 5.7                         | Versión oficial AMD                |
+| **Python**           | 3.10.12                     | Instalado en entorno virtual (venv)|
+| **PyTorch (ROCm)**   | 2.3.1+rocm5.7               | Soporte nativo AMD ROCm            |
+| **TorchVision**      | 0.14.1+rocm5.7              | Compatible con PyTorch + ROCm      |
+| **GCC**              | 11.4.0                      | Compilador para librerías y Python |
+| **pip**              | Última versión recomendada  | Para gestión de paquetes Python    |
+| **ComfyUI**          | Última versión estable       | Interfaz para generación IA        |
+
+---
+
+### Cómo verificar las versiones instaladas
+
+Puedes verificar las versiones con los siguientes comandos:
+
+```bash
+python3 --version
+python3 -c "import torch; print(torch.__version__); print(torch.version.hip)"
+python3 -c "import torchvision; print(torchvision.__version__)"
+/opt/rocm/bin/rocminfo | head -20
+uname -r
+gcc --version | head -1
+pip --version
+
 ✅ Notas y Recomendaciones Finales
 
     Modelos y Nodos: Tus modelos (.safetensors, etc.) deben ir en la carpeta ComfyUI/models/checkpoints/ y sus subcarpetas (ej: loras, vae). Los nodos personalizados van en ComfyUI/custom_nodes/.
